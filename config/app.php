@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Facade;
+
 return [
 
     /*
@@ -67,6 +69,11 @@ return [
 
     'timezone' => 'UTC',
 
+
+    //* Add new Config for currency
+    'currency'=>'USD',
+    
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -105,6 +112,8 @@ return [
         ),
     ],
 
+
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
@@ -117,6 +126,23 @@ return [
     | Supported drivers: "file", "cache"
     |
     */
+
+
+
+
+
+
+
+    //& Define Aliases
+    'aliases'=>Facade::defaultAliases()->merge([
+        'Currency'=>App\Helpers\Currency::class,
+    ])->toArray(),
+
+
+
+
+
+
 
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
