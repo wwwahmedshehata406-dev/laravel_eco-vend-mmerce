@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
-                        <li><a href="{{ route('front.layout') }}"><i class="lni lni-home"></i> Home</li>
-                        <li><a href="{{ route('products.index') }}"><i class="lni lni-shop"></i> Shop</li>
+                        <li><a href="{{ route('dashboard.front.layout') }}"><i class="lni lni-home"></i> Home</li>
+                        <li><a href="{{ route('dashboard.products.index') }}"><i class="lni lni-shop"></i> Shop</li>
                         <li>{{ $product->name }}</li>
                     </ul>
                 </div>

@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\CreateProduct;
+use App\Http\Requests\Product\UpdateProduct;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Store;
@@ -12,7 +14,8 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $Products = Product::with(['category', 'store'])->active()->paginate(10);
+        $Products = Product::with(['category', 'store'])->active()->paginate(5);
+        // dd($Products);
         return view('dashboard.products.index' , ['Products'=>$Products]);
     }
 
@@ -27,7 +30,7 @@ class ProductsController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(CreateProduct $request)
     {
         // dd($request->all());
         
@@ -44,7 +47,7 @@ class ProductsController extends Controller
 
         $Products = Product::create($data);
 
-        return redirect()->route('products.index')->with('success', 'Product Created Successfully.');
+        return redirect()->route('dashboard.products.index')->with('success', 'Product Created Successfully.');
 
     }
 
@@ -66,16 +69,14 @@ class ProductsController extends Controller
 
     public function edit(string $id)
     {
-        $product = Product::findOrFail($id);
+        $Product = Product::findOrFail($id);
         $categories = Category::all();
-        return view('dashboard.products.edit', compact('product', 'Product', 'categories'));
+        return view('dashboard.products.update', compact( 'Product', 'categories'));
     }
 
 
 
-
-
-    public function update(Request $request, string $id)
+    public function update(UpdateProduct $request, string $id)
     {
         $product = Product::findOrFail($id);
 
@@ -91,17 +92,16 @@ class ProductsController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('products.index')->with('success', 'Product Updated Successfully.');
+        return redirect()->route('dashboard.products.index')->with('success', 'Product Updated Successfully.');
     }
 
 
     public function destroy(string $id)
     {
-        
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product Deleted Successfully.');
+        return redirect()->route('dashboard.products.index')->with('success', 'Product Deleted Successfully.');
         
     }   
     

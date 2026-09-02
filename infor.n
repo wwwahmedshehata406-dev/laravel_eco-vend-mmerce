@@ -1,0 +1,28 @@
+
+
+1- dashboard ui
+2- db , migrations , models and Controllers 
+3- crud , pagination , validations and show messages
+4- Currency
+
+5- auth   [breez , fortify]
+6- cart & shapping
+7- 
+8- 
+9- 
+10-
+11-
+12-
+13-
+14-
+15-
+16-
+17-
+
+
+
+
+
+
+
+

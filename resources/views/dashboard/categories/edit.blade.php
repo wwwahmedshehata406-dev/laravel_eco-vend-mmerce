@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <form action="{{ route('categories.update' ,  $categories->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('dashboard.categories.update' ,  $categories->id) }}" method="post" enctype="multipart/form-data">
       @method('PUT')
       @csrf
       <div class="" style="align-items:start;">

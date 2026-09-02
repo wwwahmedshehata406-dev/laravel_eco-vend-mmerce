@@ -21,7 +21,7 @@
       </div>
     </a>
 
-    <a href="{{ route('orders.index') }}">
+    <a href="{{ route('dashboard.orders.index') }}">
       <div class="nav-item" onclick="navigate('orders',this)">
         <span class="nav-icon">📦</span>
         <span class="nav-label">Orders</span>
@@ -29,26 +29,24 @@
       </div>
     </a>
 
-    <a href="{{ route('products.index') }}">
+    <a href="{{ route('dashboard.products.index') }}">
       <div class="nav-item" onclick="navigate('products',this)">
         <span class="nav-icon">🏷</span>
         <span class="nav-label">Products</span>
       </div>
     </a>
   
-    <a href="{{ route('categories.index') }}">
+    <a href="{{ route('dashboard.categories.index') }}">
           <div class="nav-item" onclick="navigate('categories',this)">
       <span class="nav-icon">🗂</span>
       <span class="nav-label">Categories</span>
     </div>
     </a>
 
-    <!-- <a href="{{ route('categories.index') }}">       -->
       <div class="nav-item" onclick="navigate('customers',this)">
         <span class="nav-icon">👥</span>
         <span class="nav-label">Customers</span>
       </div>
-    <!-- </a> -->
 
     <div class="sidebar-section-title">Commerce</div>
     <div class="nav-item" onclick="navigate('analytics',this)">

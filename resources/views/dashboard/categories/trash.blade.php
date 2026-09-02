@@ -9,7 +9,7 @@
         <p class="page-sub">trashd categories</p>
       </div>
 
-      <a href="{{ route('categories.index') }}">
+      <a href="{{ route('dashboard.categories.index') }}">
         <button class="btn btn-primary">back to all categories</button>
       </a>
     </div>
@@ -44,13 +44,13 @@
                   <td>{{ $category->products_number }}</td>
               <td>
 
-                <form action="{{ route('categories.restore', $category->id) }}" method="POST" style="display:inline-block">
+                <form action="{{ route('dashboard.categories.restore', $category->id) }}" method="POST" style="display:inline-block">
                   @csrf
                   @method('PUT')
                   <button type="submit" class="btn btn-sm btn-outline-primary">Restore</button>
                 </form>
 
-                <form action="{{ route('categories.force-delete', $category->id) }}" method="POST" style="display:inline-block">
+                <form action="{{ route('dashboard.categories.force-delete', $category->id) }}" method="POST" style="display:inline-block">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Categories\CreateCategory;
 use App\Http\Requests\Categories\UpdateCategory;
 use App\Models\Category;
 use File;
@@ -29,8 +30,6 @@ class CategoriesController extends Controller
     }
 
 
-
-
     public function create()
     {
         $parents = Category::all();
@@ -40,9 +39,7 @@ class CategoriesController extends Controller
 
 
 
-
-
-    public function store(Request $request)
+    public function store(CreateCategory $request)
     {
         //* slug should be unique and generated from name  so  the value of it  = name and i should inter defferent names
         $request->merge(['slug' => \Str::slug($request->name)]);
@@ -55,7 +52,7 @@ class CategoriesController extends Controller
 
         $category = Category::create($data);
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category created successfully.');
     }
 
 
@@ -63,9 +60,6 @@ class CategoriesController extends Controller
     {
         //
     }
-
-
-
     
     /**
      * Show the form for editing the specified resource.
@@ -114,7 +108,7 @@ class CategoriesController extends Controller
         }
 
         File::delete($old_image);
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category updated successfully.');
     }
 
 
@@ -124,7 +118,7 @@ class CategoriesController extends Controller
     public function destroy( Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category deleted successfully');
     }
 
 
@@ -154,7 +148,7 @@ class CategoriesController extends Controller
         $category = Category::onlyTrashed()->findOrFail($id);
         $category->restore();
 
-        return redirect()->route('categories.trash')->with('success', 'Category Restored');
+        return redirect()->route('dashboard.categories.trash')->with('success', 'Category Restored');
 
     }
 
@@ -164,7 +158,7 @@ class CategoriesController extends Controller
         $category = Category::onlyTrashed()->findOrFail($id);
         $category->forceDelete();
 
-        return redirect()->route('categories.trash')->with('success', 'Category Deleted forever!');
+        return redirect()->route('dashboard.categories.trash')->with('success', 'Category Deleted forever!');
 
     }
 

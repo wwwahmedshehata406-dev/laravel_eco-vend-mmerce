@@ -14,6 +14,8 @@ class Product extends Model
     use HasFactory;
 
 
+
+    
     protected $fillable = [
         'name',
         'slug',
@@ -31,12 +33,17 @@ class Product extends Model
 
 
 
+
+
+
     // *=============================== SCOPE===============================
 
     public function scopeActive(Builder $builder)
     {
         $builder->where('status', '=', 'active');
     }
+
+
 
 
     //*===================== Fack Image For Products =======================
@@ -55,14 +62,20 @@ class Product extends Model
 
 
 
+
+
+
+
     public function getSalePercentAttribute()
     {
         if (!$this->compare_price) {
             return 0;
         }
-
         return  number_format((($this->compare_price - $this->price) / $this->compare_price * 100), 1);
     }
+
+
+
 
 
     //^* Globel Scope
@@ -71,6 +84,11 @@ class Product extends Model
     // {
     //     static::addGlobalScope('store', new StoreScope());
     // }
+
+
+
+
+
 
     //* =============================== Relations ===============================
 
@@ -82,12 +100,21 @@ class Product extends Model
     }
 
 
+
+
+
+
+
     //* category has many products
     //* category_id is arelation into  products table  
     public function store()
     {  
         return $this->belongsTo(Store::class, 'store_id', 'id');
     }
+
+
+
+
 
 
 
@@ -98,6 +125,8 @@ class Product extends Model
     }
 
 }
+
+
 
 
 

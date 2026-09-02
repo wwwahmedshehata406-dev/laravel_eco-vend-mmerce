@@ -7,7 +7,12 @@ use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\Front\HomeController;
 use Illuminate\Support\Facades\Route;
 
+Route::group([
+    // 'middleware' => ['auth:admin'],
+    'as' => 'dashboard.',
+    // 'prefix' => 'admin/dashboard'
 
+], function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('front.layout');
 
@@ -38,7 +43,7 @@ Route::delete('/products/{id}', [ProductsController::class, 'destroy'])->name('p
 //* [orders]
 Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
 
-
+});
 
 // Route::get('/creates', [DashBoardController::class, 'creates'])->name('categories.creates');
 

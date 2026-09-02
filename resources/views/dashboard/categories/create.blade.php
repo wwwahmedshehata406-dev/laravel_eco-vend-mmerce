@@ -16,16 +16,9 @@
       </div>
     </div>
 
-    @if (session('success'))
-      <div class="alert alert-success">
-        {{ session('success') }}
-      </div>
-    @else
-      <div class="alert alert-success">
-        <span>no exchanges</span>
-      </div>
-    @endif
-    <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
+        <x-alert/>
+        
+    <form action="{{ route('dashboard.categories.store') }}" method="post" enctype="multipart/form-data">
 
       @csrf
       <div class="" style="align-items:start;">
